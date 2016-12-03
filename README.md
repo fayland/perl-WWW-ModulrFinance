@@ -1,14 +1,35 @@
 # NAME
 
-WWW::ModulrFinance - Blah blah blah
+WWW::ModulrFinance - Modulr API
 
 # SYNOPSIS
 
     use WWW::ModulrFinance;
 
+    my $modulr = WWW::ModulrFinance->new(
+        api_key => $ENV{MODULR_APIKEY},
+        hmac_secret => $ENV{MODULR_HMAC_SECRET},
+    );
+
+    my $res = $modulr->get_accounts;
+    say Dumper(\$res);
+
 # DESCRIPTION
 
-WWW::ModulrFinance is
+WWW::ModulrFinance is for [https://modulr-technology-ltd.cloud.tyk.io/portal/api-overview/](https://modulr-technology-ltd.cloud.tyk.io/portal/api-overview/)
+
+# METHODS
+
+- get\_accounts
+- get\_account($id)
+- update\_account($id, $data)
+- get\_customer\_accounts($cid)
+- create\_customer\_account($cid, $data)
+- get\_transactions($id)
+- get\_payments
+- post\_payments
+- post\_batchpayments
+- get\_batchpayment($id)
 
 # AUTHOR
 

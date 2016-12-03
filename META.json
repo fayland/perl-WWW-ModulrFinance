@@ -1,5 +1,5 @@
 {
-   "abstract" : "Blah blah blah",
+   "abstract" : "Modulr API",
    "author" : [
       "Fayland Lam <fayland@gmail.com>"
    ],
@@ -37,6 +37,12 @@
       },
       "runtime" : {
          "requires" : {
+            "Digest::HMAC_SHA1" : "0",
+            "HTTP::Date" : "0",
+            "JSON" : "0",
+            "LWP::Protocol::https" : "0",
+            "LWP::UserAgent" : "0",
+            "MIME::Base64" : "0",
             "perl" : "5.008005"
          }
       },
@@ -47,6 +53,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/fayland/perl-WWW-ModulrFinance/issues"
+      },
+      "homepage" : "https://github.com/fayland/perl-WWW-ModulrFinance",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/fayland/perl-WWW-ModulrFinance.git",
+         "web" : "https://github.com/fayland/perl-WWW-ModulrFinance"
+      }
+   },
    "version" : "0.01"
 }
 
