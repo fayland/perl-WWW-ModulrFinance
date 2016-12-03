@@ -1,6 +1,7 @@
 Revision history for WWW-ModulrFinance
 
 {{$NEXT}}
+        - fix params for some subs
 
 0.01  2016-12-03 14:06:02 CST
         - Initial release

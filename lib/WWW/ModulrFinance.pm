@@ -2,7 +2,7 @@ package WWW::ModulrFinance;
 
 use strict;
 use 5.008_005;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use LWP::UserAgent;
 use HTTP::Date qw/time2str/;
@@ -26,7 +26,7 @@ sub new {
 }
 
 sub get_accounts {
-    (shift)->request('GET', 'accounts');
+    (shift)->request('GET', 'accounts', @_);
 }
 
 sub get_account {
@@ -40,8 +40,8 @@ sub update_account {
 }
 
 sub get_customer_accounts {
-    my ($self, $cid) = @_;
-    return $self->request('GET', 'customers/' . int($cid) . '/accounts');
+    my ($self, $cid, $params) = @_;
+    return $self->request('GET', 'customers/' . int($cid) . '/accounts', $params);
 }
 
 sub create_customer_account {
@@ -55,7 +55,8 @@ sub get_transactions {
 }
 
 sub get_payments {
-    (shift)->request('GET', 'payments');
+    my ($self, $params) = @_;
+    $self->request('GET', 'payments', $params);
 }
 
 sub post_payments {
@@ -76,7 +77,14 @@ sub get_batchpayment {
 sub request {
     my ($self, $method, $uri, $data) = @_;
 
-    my $req = HTTP::Request->new($method => $self->{base_url} . $uri => $self->__signature());
+    my $url = $self->{base_url} . $uri;
+    if ($method eq 'GET' and $data) {
+        my $uri = URI->new($url);
+        $uri->query_form($data);
+        $url = $uri->as_string;
+    }
+
+    my $req = HTTP::Request->new($method => $url => $self->__signature());
     $req->content(encode_json($data)) if $data;
 
     # print Dumper(\$req); use Data::Dumper;
