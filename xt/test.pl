@@ -17,3 +17,10 @@ my $modulr = WWW::ModulrFinance->new(
 
 my $res = $modulr->get_accounts;
 say Dumper(\$res);
+
+# my $res = $modulr->create_customer_account('C1200J1K', {
+#     "currency" => "GBP",
+#     "externalReference" => "TEST",
+#     "productCode" => "TESTPRODUCT"
+# });
+# say Dumper(\$res);

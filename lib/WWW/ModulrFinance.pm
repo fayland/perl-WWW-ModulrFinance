@@ -36,7 +36,41 @@ sub get_account {
 
 sub update_account {
     my ($self, $id, $data) = @_;
-    return $self->request('GET', 'accounts/' . int($id), $data);
+    return $self->request('PUT', 'accounts/' . int($id), $data);
+}
+
+sub get_customer_accounts {
+    my ($self, $cid) = @_;
+    return $self->request('GET', 'customers/' . int($cid) . '/accounts');
+}
+
+sub create_customer_account {
+    my ($self, $cid, $data) = @_;
+    return $self->request('POST', 'customers/' . int($cid) . '/accounts', $data);
+}
+
+sub get_transactions {
+    my ($self, $id) = @_;
+    return $self->request('GET', 'accounts/' . int($id) . '/transactions');
+}
+
+sub get_payments {
+    (shift)->request('GET', 'payments');
+}
+
+sub post_payments {
+    my ($self, $data) = @_;
+    return $self->request('POST', 'payments', $data);
+}
+
+sub post_batchpayments {
+    my ($self, $data) = @_;
+    return $self->request('POST', 'batchpayments', $data);
+}
+
+sub get_batchpayment {
+    my ($self, $id) = @_;
+    return $self->request('GET', 'batchpayments/' . int($id));
 }
 
 sub request {
@@ -106,6 +140,20 @@ WWW::ModulrFinance is for L<https://modulr-technology-ltd.cloud.tyk.io/portal/ap
 =item * get_account($id)
 
 =item * update_account($id, $data)
+
+=item * get_customer_accounts($cid)
+
+=item * create_customer_account($cid, $data)
+
+=item * get_transactions($id)
+
+=item * get_payments
+
+=item * post_payments
+
+=item * post_batchpayments
+
+=item * get_batchpayment($id)
 
 =back
 
