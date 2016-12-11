@@ -31,27 +31,27 @@ sub get_accounts {
 
 sub get_account {
     my ($self, $id) = @_;
-    return $self->request('GET', 'accounts/' . int($id));
+    return $self->request('GET', 'accounts/' . $id);
 }
 
 sub update_account {
     my ($self, $id, $data) = @_;
-    return $self->request('PUT', 'accounts/' . int($id), $data);
+    return $self->request('PUT', 'accounts/' . $id, $data);
 }
 
 sub get_customer_accounts {
     my ($self, $cid, $params) = @_;
-    return $self->request('GET', 'customers/' . int($cid) . '/accounts', $params);
+    return $self->request('GET', 'customers/' . $cid . '/accounts', $params);
 }
 
 sub create_customer_account {
     my ($self, $cid, $data) = @_;
-    return $self->request('POST', 'customers/' . int($cid) . '/accounts', $data);
+    return $self->request('POST', 'customers/' . $cid . '/accounts', $data);
 }
 
 sub get_transactions {
     my ($self, $id) = @_;
-    return $self->request('GET', 'accounts/' . int($id) . '/transactions');
+    return $self->request('GET', 'accounts/' . $id . '/transactions');
 }
 
 sub get_payments {
@@ -71,7 +71,7 @@ sub post_batchpayments {
 
 sub get_batchpayment {
     my ($self, $id) = @_;
-    return $self->request('GET', 'batchpayments/' . int($id));
+    return $self->request('GET', 'batchpayments/' . $id);
 }
 
 sub request {
