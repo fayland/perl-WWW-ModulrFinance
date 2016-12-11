@@ -50,8 +50,8 @@ sub create_customer_account {
 }
 
 sub get_transactions {
-    my ($self, $id) = @_;
-    return $self->request('GET', 'accounts/' . $id . '/transactions');
+    my ($self, $id, $params) = @_;
+    return $self->request('GET', 'accounts/' . $id . '/transactions', $params);
 }
 
 sub get_payments {
@@ -82,6 +82,7 @@ sub request {
         my $uri = URI->new($url);
         $uri->query_form($data);
         $url = $uri->as_string;
+        $data = undef; # don't be in POST content
     }
 
     my $req = HTTP::Request->new($method => $url => $self->__signature());
@@ -153,7 +154,7 @@ WWW::ModulrFinance is for L<https://modulr-technology-ltd.cloud.tyk.io/portal/ap
 
 =item * create_customer_account($cid, $data)
 
-=item * get_transactions($id)
+=item * get_transactions($id, { size => 100, ... })
 
 =item * get_payments
 
