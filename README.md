@@ -25,7 +25,7 @@ WWW::ModulrFinance is for [https://modulr-technology-ltd.cloud.tyk.io/portal/api
 - update\_account($id, $data)
 - get\_customer\_accounts($cid)
 - create\_customer\_account($cid, $data)
-- get\_transactions($id)
+- get\_transactions($id, { size => 100, ... })
 - get\_payments
 - post\_payments
 - post\_batchpayments
