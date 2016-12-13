@@ -111,7 +111,8 @@ sub __signature {
     return [
         'Date' => $date,
         'x-mod-nonce' => $nonce,
-        'Authorization' => qq~Signature keyId="~ . $self->{api_key} . qq~",algorithm="hmac-sha1",headers="date x-mod-nonce",signature="$sig"~
+        'Authorization' => qq~Signature keyId="~ . $self->{api_key} . qq~",algorithm="hmac-sha1",headers="date x-mod-nonce",signature="$sig"~,
+        "Content-Type" => "application/json;charset=UTF-8",
     ];
 }
 
