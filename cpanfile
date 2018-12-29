@@ -6,6 +6,7 @@ requires 'HTTP::Date';
 requires 'Digest::HMAC_SHA1';
 requires 'MIME::Base64';
 requires 'JSON';
+requires 'URI::Escape';
 
 on test => sub {
     requires 'Test::More', '0.96';
